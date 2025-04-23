@@ -123,7 +123,7 @@
       padding: 6px;
       border: 1px solid #ccc;
       resize: vertical;
-      min-height: 80px;
+      min-height: 100px;
       background: #fafafa;
     }
 
@@ -173,6 +173,10 @@
       background-color: green;
     }
 
+    .markDelivered{
+      height: 30px;
+    }
+    
     .footer {
       background: #222;
       padding: 20px;
@@ -254,7 +258,7 @@
               <p class="order-time">Ordered on: ${orderDate}</p>
               <div class="progress" id="progress${index}">
                 <p><strong>Status:</strong> <button class="status-button" id="status${index}">Pending</button></p>
-                <button onclick="markDelivered(${index})">Mark as Delivered</button>
+                <button class="markDelivered" onclick="markDelivered(${index})">Mark as Delivered</button>
               </div>
             </div>
           </div>
