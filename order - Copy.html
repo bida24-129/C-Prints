@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - Style Fix Clothing</title>
+  <link rel="stylesheet" href="order.css" />
+  <link rel="stylesheet" href="nav.css" />
+  <link rel="stylesheet" href="footer.css" />
+  <style>
+    .orderForm {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    body::before {
+      content: '';
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+    }
+
+    body.popup-open::before {
+      display: block;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
+    }
+
+    .close-button:hover {
+      color: red;
+    }
+
+    .place-order-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ff6347;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .place-order-button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="home.php">Home</a>
+      <a href="about.html">About</a>
+      <a href="service.html">Services</a>
+      <a href="FAQ.html">FAQ</a>
+      <a href="testimonial.html">Testimonials</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="order.html" class="active">Order</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact</a>
+      <a href="myprofile.php">Profile</a>
+      <a href="search.php">Search</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h1>How to Place an Order</h1>
+      <ol>
+        <li>
+          <h2>Step 1: Browse Products</h2>
+          <div class="container">
+            <p>Explore our wide range of clothing items and select the ones you like. You can use the search bar to find specific items.</p>
+          </div>
+        </li>
+        <li>
+          <h2>Step 2: Add to Cart</h2>
+          <div class="container">
+            <p>Once you find a product you like, select the size and quantity, then click the "Add to Cart" button.</p>
+          </div>
+        </li>
+        <li>
+          <h2>Step 3: Finalize Order</h2>
+          <div class="container">
+            <p>After selecting the desired products, click on the order button to place your order.</p>
+          </div>
+        </li>
+        <li>
+          <h2>Step 4: Proceed with Payment</h2>
+          <div class="container">
+            <p>Pay 50% deposit for the products you want as a confirmation for your order.</p>
+          </div>
+        </li>
+        <li>
+          <h2>Step 5: Order Confirmation</h2>
+          <div class="container">
+            <p>The order will be done in almost a week and ready for collection.</p>
+            <b><p>Delivery services are available at a fee depending on the distance travelled.</p></b>
+          </div>
+        </li>
+      </ol>
+      <button class="place-order-button" onclick="showOrderForm()">Place Order</button>
+    </section>
+  </main>
+
+  <div class="orderForm" id="orderForm" style="display: none;">
+    <span class="close-button" onclick="hideOrderForm()">×</span>
+    <h1>Order Your Items</h1>
+    <p>Fill out the form below to place your order.</p>
+    <section class="order-form">
+      <form id="OrderForm" onsubmit="handleOrder(event)">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required />
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required />
+        <label for="address">Delivery Address:</label>
+        <textarea id="address" name="address" required></textarea>
+        <label for="type">Product Type:</label>
+        <select id="type" name="type" required>
+          <option value="">Select a product...</option>
+          <option value="T-shirt">T-shirt</option>
+          <option value="Hoodie">Hoodie</option>
+          <option value="Sweater">Sweater</option>
+          <option value="Cushion">Cushion</option>
+          <option value="Pouche">Pouche</option>
+          <option value="Cap">Cap</option>
+          <option value="Cup">Cup</option>
+          <option value="Bucket-Hat">Bucket-Hat</option>
+          <option value="Bag">Bag</option>
+        </select>
+        <select id="size" name="size" required></select>
+        <select id="design" name="design" required></select>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required />
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+        <label for="color">Color:</label>
+        <select id="color" name="color" onchange="toggleColorSpecify(this.value)" required>
+          <option value="">Select a color...</option>
+          <option value="Red">Red</option>
+          <option value="Blue">Blue</option>
+          <option value="Green">Green</option>
+          <option value="Specify">Specify</option>
+        </select>
+        <div id="colorSpecify" style="display: none;">
+          <label for="color_specify">Specify Color:</label>
+          <textarea id="color_specify" name="color_specify"></textarea>
+        </div>
+        <button type="submit">Order</button>
+        <p id="responseMessage"></p>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    const sizeOptions = {
+      "T-shirt": ["X-Small", "Small", "Medium", "Large", "X-Large", "XX-Large"],
+      "Hoodie": ["X-Small", "Small", "Medium", "Large", "X-Large", "XX-Large"],
+      "Sweater": ["X-Small", "Small", "Medium", "Large", "X-Large", "XX-Large"],
+      "Cap": ["Small", "Medium", "Large"],
+      "Cup": [],
+      "Bucket-Hat": ["Small", "Medium", "Large"],
+      "Pouche": [],
+      "Cushion": [],
+      "Bag": []
+    };
+
+    const designOptions = {
+      "T-shirt": ["Pocket", "A4", "A3"],
+      "Hoodie": ["Pocket", "A4", "A3"],
+      "Sweater": ["Pocket", "A4", "A3"],
+      "Cap": ["Pocket"],
+      "Cup": ["Pocket"],
+      "Bucket-Hat": ["Pocket"],
+      "Pouche": ["A6"],
+      "Cushion": ["A4", "A3"],
+      "Bag": ["A4"]
+    };
+
+    const priceTable = {
+      "T-shirt": { "Pocket": 100, "A4": 120, "A3": 140 },
+      "Hoodie": { "Pocket": 280, "A4": 320, "A3": 340 },
+      "Sweater": { "Pocket": 200, "A4": 220, "A3": 240 },
+      "Cushion": { "A4": 100 },
+      "Pouche": { "A6": 70 },
+      "Cap": { "Pocket": 90 },
+      "Cup": { "Pocket": 100 },
+      "Bucket-Hat": { "Pocket": 110 },
+      "Bag": { "A4": 150 }
+    };
+
+    document.getElementById('type').addEventListener('change', function () {
+      const selectedType = this.value;
+      const sizeSelect = document.getElementById('size');
+      sizeSelect.innerHTML = '';
+      if (sizeOptions[selectedType].length > 0) {
+        sizeOptions[selectedType].forEach(size => {
+          const option = document.createElement('option');
+          option.value = size;
+          option.textContent = size;
+          sizeSelect.appendChild(option);
+        });
+        sizeSelect.disabled = false;
+      } else {
+        const option = document.createElement('option');
+        option.value = '';
+        option.textContent = 'N/A';
+        sizeSelect.appendChild(option);
+        sizeSelect.disabled = true;
+      }
+
+      const designSelect = document.getElementById('design');
+      designSelect.innerHTML = '';
+      designOptions[selectedType].forEach(design => {
+        const option = document.createElement('option');
+        option.value = design;
+        option.textContent = design;
+        designSelect.appendChild(option);
+      });
+    });
+
+    function toggleColorSpecify(value) {
+      const colorSpecify = document.getElementById('colorSpecify');
+      if (value === 'Specify') {
+        colorSpecify.style.display = 'block';
+      } else {
+        colorSpecify.style.display = 'none';
+        document.getElementById('color_specify').value = "";
+      }
+    }
+
+    function calculateTotalCost(productType, designSize, quantity) {
+      let unitPrice = priceTable[productType]?.[designSize];
+      if (!unitPrice) return null;
+      let total = unitPrice * quantity;
+      if (quantity >= 10) total *= 0.95;
+      return total;
+    }
+
+    function sendToWhatsapp(name, email, phone, address, type, size, design, quantity, description, color, colorSpecify) {
+      let number = '26773684840';
+      let url = "https://wa.me/" + number + "?text=" +
+        "Hello, I would like to place an order for the following items:\n\n" +
+        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}\nProduct Type: ${type}\nProduct Size: ${size}\nDesign Size: ${design}\nQuantity: ${quantity}\nDescription: ${description}\nColor: ${color}` +
+        (color === 'Specify' ? `\nSpecify Color: ${colorSpecify}` : "") + "\n\nThank you!";
+      window.open(url, '_blank');
+    }
+
+    async function handleOrder(event) {
+      event.preventDefault();
+
+      let name = document.getElementById('name').value;
+      let email = document.getElementById('email').value;
+      let phone = document.getElementById('phone').value;
+      let address = document.getElementById('address').value;
+      let type = document.getElementById('type').value;
+      let size = document.getElementById('size').value;
+      let design = document.getElementById('design').value;
+      let quantity = parseInt(document.getElementById('quantity').value);
+      let description = document.getElementById('description').value;
+      let color = document.getElementById('color').value;
+      let colorSpecify = document.getElementById('color_specify').value;
+
+      let totalCost = calculateTotalCost(type, design, quantity);
+      if (totalCost === null) {
+        alert("Invalid product type or design size.");
+        return;
+      }
+
+      let item = {
+        type, size, design, quantity, description, color,
+        colorSpecify, totalCost: totalCost.toFixed(2)
+      };
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      alert(`Total Cost: P${totalCost.toFixed(2)}${quantity >= 10 ? " (5% discount applied!)" : ""}`);
+
+      sendToWhatsapp(name, email, phone, address, type, size, design, quantity, description, color, colorSpecify);
+
+      try {
+        await fetch('customer_ordr.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            name, email, phone, address, type, size, design,
+            quantity, description, color, color_specify: colorSpecify,
+            total_cost: totalCost.toFixed(2)
+          })
+        });
+      } catch (error) {
+        console.error("Error saving order:", error);
+      }
+
+      document.getElementById('OrderForm').reset();
+      document.getElementById('colorSpecify').style.display = 'none';
+      document.getElementById('responseMessage').textContent = '✅ Order sent via WhatsApp!';
+
+      setTimeout(() => {
+        hideOrderForm();
+        document.getElementById('responseMessage').textContent = '';
+        window.location.href = "cart.html";
+      }, 1500);
+    }
+
+    function showOrderForm() {
+      document.getElementById('orderForm').style.display = 'block';
+      document.body.classList.add('popup-open');
+    }
+
+    function hideOrderForm() {
+      document.getElementById('orderForm').style.display = 'none';
+      document.body.classList.remove('popup-open');
+    }
+  </script>
+
+  <div class="footer">
+    <div class="social-icons">
+      <a href="#"><img src="facebook.png" alt="Facebook" /></a>
+      <a href="#"><img src="instagram.png" alt="Instagram" /></a>
+      <a href="https://wa.me/c/26773684840"><img src="whatsapp.png" alt="WhatsApp" /></a>
+      <a href="#"><img src="tiktok.png" alt="TikTok" /></a>
+    </div>
+  </div>
+</body>
+</html>
