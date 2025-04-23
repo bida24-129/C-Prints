@@ -1,167 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cart - Style Fix Clothing</title>
-  <link rel="stylesheet" href="nav.css">
-  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="nav.css" />
+  <link rel="stylesheet" href="footer.css" />
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      padding: 20px;
       background: #f5f5f5;
-    }
-    .cart-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-      gap: 20px;
-    }
-    .cart-item {
-      background: linear-gradient(135deg, #f7f7f7, #e0f0ff);
-      border-radius: 16px;
-      padding: 15px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      display: flex;
-      gap: 20px;
-      transition: transform 0.3s ease;
-      min-height: 260px;
-    }
-    .cart-item:hover {
-      transform: translateY(-10px);
-    }
-    .left-section {
-      flex: 1;
-      color: #333;
-      padding-right: 10px;
-      border-right: 2px solid #e0e0e0;
-    }
-    .right-section {
-      flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      min-height: 100vh;
     }
-    .cart-item h3 {
-      margin-top: 0;
+
+    header, .footer {
+      flex-shrink: 0;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+
+    .cart-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .no-orders {
+      text-align: center;
+      margin-top: 100px;
+      font-size: 24px;
+      color: #555;
+    }
+
+    .cart-item {
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #f7f7f7, #e0f0ff);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 15px;
+      scroll-behavior: smooth;
+    }
+
+    .left-section {
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    .left-section h3 {
+      margin: 0 0 10px 0;
       font-size: 20px;
-      color: #333;
       font-weight: bold;
     }
-    .details, .progress, .comment {
-      margin-top: 5px;
-      line-height: 1.2;
+
+    .details p {
+      margin: 4px 0;
+      font-size: 14px;
     }
+
     .progress {
-      background: #e0f0ff;
-      padding: 10px;
-      border-radius: 10px;
       margin-top: 10px;
+      background: #e0f0ff;
+      padding: 8px;
+      border-radius: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .progress button {
-      background-color: black;
-      color: white;
+
+    .comment, .review-container {
+      margin-top: 10px;
     }
-    .progress button:hover {
-      background-color: #555;
-    }
+
     .comment textarea {
       width: 100%;
-      padding: 1px;
-      border-radius: 12px;
+      border-radius: 8px;
+      padding: 6px;
       border: 1px solid #ccc;
       resize: vertical;
-      min-height: 310px;
-      background: #f9f9f9;
+      min-height: 80px;
+      background: #fafafa;
     }
-    .comment textarea:focus {
-      outline: none;
-      border-color: #28a745;
+
+    .review-container select {
+      width: 100%;
+      padding: 6px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
-    .comment button, .progress button {
+
+    .save-comment-button, .progress button {
       margin-top: 10px;
       padding: 8px 16px;
       border: none;
-      background: #333;
-      color: white;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .comment button:hover, .progress button:hover {
-      background-color: #555;
-    }
-    .review-container {
-      margin-top: 10px;
-      padding: 10px;
-      background: #f0f0f0;
-      border-radius: 12px;
-    }
-    .review select {
-      padding: 8px;
       border-radius: 10px;
-      border: 1px solid #ccc;
-      background: #f9f9f9;
-      width: 100%;
+      background: #28a745;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
     }
-    .review select:focus {
-      outline: none;
-      border-color: #28a745;
+
+    .progress button {
+      background: black;
     }
+
+    .progress button:hover, .save-comment-button:hover {
+      opacity: 0.9;
+    }
+
     .status-button {
       padding: 6px 12px;
       background-color: red;
       color: white;
       border: none;
-      border-radius: 12px;
+      border-radius: 8px;
       cursor: not-allowed;
-      font-weight: bold;
     }
+
     .status-button.delivered {
       background-color: green;
     }
-    .save-comment-button {
-      background-color: #28a745;
-      border: none;
+
+    .footer {
+      background: #222;
+      padding: 20px;
+      text-align: center;
       color: white;
-      padding: 10px 20px;
-      border-radius: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
     }
-    .save-comment-button:hover {
-      background-color: #218838;
+
+    .footer .social-icons img {
+      width: 30px;
+      margin: 0 10px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .cart-item {
+        max-height: 350px;
+      }
+
+      .save-comment-button, .progress button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-          <a href="home.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="service.html">Services</a>
-          <a href="FAQ.html">FAQ</a>
-          <a href="testimonial.html">Testimonials</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="order.html">Order</a>
-          <a href="cart.html" class="active">Cart</a>
-          <a href="contact.html">Contact</a>
-          <a href="search.html">Search</a>
-        </nav>
-      </header>
+  <header>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="service.html">Services</a>
+      <a href="FAQ.html">FAQ</a>
+      <a href="testimonial.html">Testimonials</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="order.html">Order</a>
+      <a href="cart.html" class="active">Cart</a>
+      <a href="contact.html">Contact</a>
+      <a href="search.html">Search</a>
+    </nav>
+  </header>
 
-  <h1>Your Cart</h1>
-  <div class="cart-container" id="cartContainer"></div>
+  <main>
+    <h1>Your Cart</h1>
+    <div class="cart-container" id="cartContainer"></div>
+  </main>
+
+  <div class="footer">
+    <div class="social-icons">
+      <a href="#"><img src="facebook.png" alt="Facebook" /></a>
+      <a href="#"><img src="instagram.png" alt="Instagram" /></a>
+      <a href="https://wa.me/c/26773684840"><img src="whatsapp.png" alt="WhatsApp" /></a>
+      <a href="#"><img src="tiktok.png" alt="TikTok" /></a>
+    </div>
+    <p>&copy; 2025 Style Fix Clothing. All rights reserved.</p>
+  </div>
+
   <script>
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartContainer = document.getElementById('cartContainer');
 
     if (cart.length === 0) {
-      cartContainer.innerHTML = '<p>No orders yet. Go to <a href="order.html">order</a> page.</p>';
+      cartContainer.innerHTML = '<div class="no-orders">No orders yet. Go to <a href="order.html">order</a> page.</div>';
     } else {
       cart.forEach((item, index) => {
         const card = document.createElement('div');
@@ -185,23 +220,21 @@
               </div>
             </div>
           </div>
-          <div class="right-section">
-            <div class="comment">
-              <label for="comment${index}"><strong>Add a comment:</strong></label>
-              <textarea id="comment${index}" placeholder="e.g., Poor customer, you did not deliver the goods on time...                                                                                                                                                                                                                                                                                              I really appreciate the way you guys handle your customers but next time please try to communicate better on the order progress..."></textarea>
-            </div>
-            <div class="review-container">
-              <label for="rating${index}"><strong>Rating (out of 5):</strong></label>
-              <select id="rating${index}">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-            </div>
-            <button class="save-comment-button" onclick="saveComment(${index})">Send Comment</button>
+          <div class="comment">
+            <label for="comment${index}"><strong>Add a comment:</strong></label>
+            <textarea id="comment${index}" placeholder="Write your comment about the order..."></textarea>
           </div>
+          <div class="review-container">
+            <label for="rating${index}"><strong>Rating (out of 5):</strong></label>
+            <select id="rating${index}">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5" selected>5</option>
+            </select>
+          </div>
+          <button class="save-comment-button" onclick="saveComment(${index})">Send Comment</button>
         `;
         cartContainer.appendChild(card);
       });
@@ -212,12 +245,12 @@
       const comment = commentBox.value.trim();
       const rating = document.getElementById(`rating${index}`).value;
       if (comment) {
-        const message = `Order ${index + 1} Comment: "${comment}"\nRating: ${rating}/5`;
-        const whatsappUrl = `https://wa.me/c/26773684840?text=${encodeURIComponent(message)}`;
+        const message = `Order ${index + 1} Comment:\n"${comment}"\nRating: ${rating}/5`;
+        const whatsappUrl = `https://wa.me/26773684840?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, "_blank");
-        alert(`Comment saved: "${comment}"\nRating: ${rating}/5`);
+        alert(`Comment sent via WhatsApp:\n"${comment}"\nRating: ${rating}/5`);
       } else {
-        alert("Please write a comment before saving.");
+        alert("Please write a comment before sending.");
       }
     }
 
@@ -229,13 +262,5 @@
     }
   </script>
 
-  <div class="footer">
-    <div class="social-icons">
-      <a href="#"><img src="facebook.png" alt="Facebook" /></a>
-      <a href="#"><img src="instagram.png" alt="Instagram" /></a>
-      <a href="https://wa.me/c/26773684840"><img src="whatsapp.png" alt="WhatsApp" /></a>
-      <a href="#"><img src="tiktok.png" alt="TikTok" /></a>
-    </div>
-  </div>
 </body>
 </html>
