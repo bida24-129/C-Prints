@@ -304,48 +304,39 @@
       sendToWhatsapp(name, email, phone, address, type, size, design, quantity, description, color, colorSpecify);
 
       try {
-        await fetch('customer_ordr.php', {
+        let response = await fetch('customer_ordr.php', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams({
+          body: JSON.stringify({
             name, email, phone, address, type, size, design,
-            quantity, description, color, color_specify: colorSpecify,
-            total_cost: totalCost.toFixed(2)
-          })
+            quantity, description, color, colorSpecify
+          }),
+          headers: { 'Content-Type': 'application/json' }
         });
+
+        let result = await response.json();
+        document.getElementById('responseMessage').textContent = result.message;
       } catch (error) {
-        console.error("Error saving order:", error);
+        document.getElementById('responseMessage').textContent = 'Error submitting the order.';
       }
-
-      document.getElementById('OrderForm').reset();
-      document.getElementById('colorSpecify').style.display = 'none';
-      document.getElementById('responseMessage').textContent = '✅ Order sent via WhatsApp!';
-
-      setTimeout(() => {
-        hideOrderForm();
-        document.getElementById('responseMessage').textContent = '';
-        window.location.href = "cart.html";
-      }, 1500);
     }
 
     function showOrderForm() {
-      document.getElementById('orderForm').style.display = 'block';
       document.body.classList.add('popup-open');
+      document.getElementById('orderForm').style.display = 'block';
     }
 
     function hideOrderForm() {
-      document.getElementById('orderForm').style.display = 'none';
       document.body.classList.remove('popup-open');
+      document.getElementById('orderForm').style.display = 'none';
     }
   </script>
 
-  <div class="footer">
-    <div class="social-icons">
-      <a href="#"><img src="facebook.png" alt="Facebook" /></a>
-      <a href="#"><img src="instagram.png" alt="Instagram" /></a>
-      <a href="https://wa.me/c/26773684840"><img src="whatsapp.png" alt="WhatsApp" /></a>
-      <a href="#"><img src="tiktok.png" alt="TikTok" /></a>
+  <footer>
+    <div class="footer-icons">
+      <a href="#" target="_blank" class="social-icon">Facebook</a>
+      <a href="#" target="_blank" class="social-icon">Instagram</a>
+      <a href="#" target="_blank" class="social-icon">Twitter</a>
     </div>
-  </div>
+  </footer>
 </body>
 </html>
