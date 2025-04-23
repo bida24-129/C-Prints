@@ -46,9 +46,8 @@
     }
 
     .cart-item {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 20px;
       background: linear-gradient(135deg, #f7f7f7, #e0f0ff);
       border-radius: 16px;
@@ -73,7 +72,6 @@
     }
 
     .left-section, .right-section {
-      flex: 1 1 50%;
       min-width: 280px;
       padding: 10px;
       box-sizing: border-box;
@@ -189,11 +187,7 @@
 
     @media (max-width: 768px) {
       .cart-item {
-        flex-direction: column;
-      }
-
-      .save-comment-button {
-        width: 100%;
+        grid-template-columns: 1fr;
       }
     }
   </style>
