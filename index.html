@@ -1,181 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="index.css">
-    <style>
-        body {
-            background-image: url('https://cdn.pixabay.com/photo/2018/01/05/18/05/bench-3063558_1280.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            flex-direction: row;
-        }
-        .left-column {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            width: 35%;
-            margin-right: 10%;
-        }
-        .envelope {
-            width: 60%;
-            background-color: #fff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            text-align: center;
-            border-radius: 15px;
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-        }
-        .envelope::before {
-            content: "✉️";
-            font-size: 70px;
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .envelope .message {
-            display: none;
-            font-size: 18px;
-            color: #333;
-            margin-top: 20px;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-        .envelope.open .message {
-            display: block;
-            opacity: 1;
-        }
-        .notification-bubble {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: #ff6347;
-            color: white;
-            font-size: 22px;
-            padding: 5px 10px;
-            border-radius: 50%;
-        }
-        .notification-text {
-            font-size: 14px;
-            color: #333;
-            margin-top: 10px;
-        }
-        .store-button {
-            padding: 12px 20px;
-            background-color: #ff6347;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 30%;
-            text-align: center;
-            transition: background-color 0.3s;
-            margin-top: 20px;
-        }
-        .store-button:hover {
-            background-color: #333;
-        }
-        .right-column {
-            width: 50%;
-        }
-        .login-form {
-            width: 70%;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .login-form h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #333;
-        }
-        .login-form input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: none;
-            background-color: transparent;
-            border-bottom: 2px solid #ff6347;
-            border-radius: 0;
-            box-sizing: border-box;
-            font-size: 16px;
-            color: #333;
-        }
-        .login-form .login-button {
-            background-color: #ff6347;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 100%;
-            padding: 12px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        .login-form .login-button:hover {
-            background-color: #333;
-        }
-        .login-form a {
-            text-decoration: none;
-            color: #ff6347;
-            font-size: 14px;
-        }
-        .message {
-            margin-top: 20px;
-        }
-        .message p {
-            font-size: 12px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="index.css"/>
+  <style>
+    body {
+      background-image: url('https://cdn.pixabay.com/photo/2018/01/05/18/05/bench-3063558_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      flex-direction: row;
+    }
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 35%;
+      margin-right: 10%;
+    }
+    .envelope {
+      width: 60%;
+      background-color: #fff;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+      border-radius: 15px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    }
+    .envelope::before {
+      content: "✉️";
+      font-size: 70px;
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .envelope .message {
+      display: none;
+      font-size: 18px;
+      color: #333;
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .envelope.open .message {
+      display: block;
+      opacity: 1;
+    }
+    .notification-bubble {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: #ff6347;
+      color: white;
+      font-size: 22px;
+      padding: 5px 10px;
+      border-radius: 50%;
+    }
+    .notification-text {
+      font-size: 14px;
+      color: #333;
+      margin-top: 10px;
+    }
+    .store-button {
+      padding: 12px 20px;
+      background-color: #ff6347;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 30%;
+      text-align: center;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+    .store-button:hover {
+      background-color: #333;
+    }
+    .right-column {
+      width: 50%;
+    }
+    .login-form {
+      width: 70%;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .login-form h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+    .login-form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      background-color: transparent;
+      border-bottom: 2px solid #ff6347;
+      border-radius: 0;
+      box-sizing: border-box;
+      font-size: 16px;
+      color: #333;
+    }
+    .login-form .login-button {
+      background-color: #ff6347;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100%;
+      padding: 12px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    .login-form .login-button:hover {
+      background-color: #333;
+    }
+    .login-form a {
+      text-decoration: none;
+      color: #ff6347;
+      font-size: 14px;
+    }
+    .message {
+      margin-top: 20px;
+    }
+    .message p {
+      font-size: 12px;
+    }
+  </style>
 </head>
 <body>
 
 <div class="left-column">
-    <div class="envelope" onclick="toggleMessage()">
-        <div class="notification-bubble" id="notificationBubble">1</div>
-        <div class="message" id="dailyMessage">
-            <!-- Message will be inserted by JavaScript -->
-        </div>
-    </div>
+  <div class="envelope" onclick="toggleMessage()">
+    <div class="notification-bubble" id="notificationBubble">1</div>
+    <div class="message" id="dailyMessage"></div>
+  </div>
 
-    <div class="notification-text" id="notificationText">
-        Press on the envelope to view your notification.
-    </div>
+  <div class="notification-text" id="notificationText">
+    Press on the envelope to view your notification.
+  </div>
 
-    <div class="store-button" onclick="window.location.href='store.html';">
-        View Our Store
-    </div>
+  <div class="store-button" onclick="window.location.href='store.html';">
+    View Our Store
+  </div>
 </div>
 
 <div class="right-column">
-    <div class="login-form">
-        <h2>Login</h2>
-        <input type="text" name="username" placeholder="Enter username" required>
-        <input type="password" name="password" placeholder="Enter your password" required>
-        <a href="home.html" class="login-button">Login</a>
-        <a href="forgot-password.html">Forgot password?</a>
-        <div class="message">
-            <p>Don't have an account? <a href="create.html">Create one</a></p>
-        </div>
+  <div class="login-form">
+    <h2>Login</h2>
+    <input type="text" name="username" placeholder="Enter username" required>
+    <input type="password" name="password" placeholder="Enter your password" required>
+    <a href="home.html" class="login-button">Login</a>
+    <a href="forgot-password.html">Forgot password?</a>
+    <div class="message">
+      <p>Don't have an account? <a href="create.html">Create one</a></p>
     </div>
+  </div>
 </div>
+
+<script>
+  const messages = [
+    "🌞 Keep your head up. God is working even when you don’t see it.",
+    "🕊️ Faith over fear. Let today be the day you trust more.",
+    "🙏 You are not alone. God walks beside you every step of the way.",
+    "🌟 Let your light shine today—someone needs your spark.",
+    "💡 God’s timing is perfect. Never early, never late.",
+    "📖 Start your day with gratitude and God’s word.",
+    "🌈 Every storm runs out of rain. Your sunshine is near.",
+    "🙌 Don’t worry about tomorrow, God is already there.",
+    "✨ You were created with a purpose. Live it boldly.",
+    "💖 God’s love never fails. Rest in that truth today."
+  ];
+
+  // Generate a daily message based on the date
+  const today = new Date();
+  const index = today.getDate() % messages.length;
+  const todayMessage = messages[index];
+
+  function toggleMessage() {
+    const envelope = document.querySelector('.envelope');
+    const message = document.getElementById('dailyMessage');
+    const bubble = document.getElementById('notificationBubble');
+    const text = document.getElementById('notificationText');
+
+    envelope.classList.toggle('open');
+
+    if (envelope.classList.contains('open')) {
+      message.innerText = todayMessage;
+      bubble.style.display = 'none';
+      text.innerText = 'You have read your message.';
+    } else {
+      message.innerText = '';
+      bubble.style.display = 'block';
+      text.innerText = 'Press on the envelope to view your notification.';
+    }
+  }
+</script>
 
 </body>
 </html>
