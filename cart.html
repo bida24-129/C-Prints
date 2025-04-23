@@ -243,11 +243,11 @@
         card.innerHTML = `
           <button class="remove-icon" onclick="removeCartItem(${index})">×</button>
           <div class="left-section">
-            <h3>Order ${index + 1} - ${item.type || 'N/A'}</h3>
+            <h3>Order ${index + 1} - ${item.type}</h3>
             <div class="details">
-              <p><strong>Name:</strong> ${item.name || 'N/A'}</p>
-              <p><strong>Email:</strong> ${item.email || 'N/A'}</p>
-              <p><strong>Phone:</strong> ${item.phone || 'N/A'}</p>
+              <p><strong>Name:</strong> ${item.name}</p>
+              <p><strong>Email:</strong> ${item.email}</p>
+              <p><strong>Phone:</strong> ${item.phone}</p>
               <p><strong>Size:</strong> ${item.size}</p>
               <p><strong>Design:</strong> ${item.design}</p>
               <p><strong>Quantity:</strong> ${item.quantity}</p>
