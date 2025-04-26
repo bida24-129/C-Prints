@@ -137,3 +137,23 @@ body {
     .message p {
       font-size: 12px;
     }
+@media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .left-column {
+        display: none;
+      }
+
+      .right-column {
+        width: 100%;
+        padding: 2rem 1rem;
+      }
+
+      .store-button {
+        margin-top: 2rem;
+        width: 100%;
+        text-align: center;
+      }
+    }
