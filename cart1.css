@@ -1,0 +1,129 @@
+ body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .cart-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 20px;
+    }
+    .cart-item {
+      background: linear-gradient(135deg, #f7f7f7, #e0f0ff);
+      border-radius: 16px;
+      padding: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 20px;
+      transition: transform 0.3s ease;
+      min-height: 260px;
+    }
+    .cart-item:hover {
+      transform: translateY(-10px);
+    }
+    .left-section {
+      flex: 1;
+      color: #333;
+      padding-right: 10px;
+      border-right: 2px solid #e0e0e0;
+    }
+    .right-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .cart-item h3 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #333;
+      font-weight: bold;
+    }
+    .details, .progress, .comment {
+      margin-top: 5px;
+      line-height: 1.2;
+    }
+    .progress {
+      background: #e0f0ff;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .progress button {
+      background-color: black;
+      color: white;
+    }
+    .progress button:hover {
+      background-color: #555;
+    }
+    .comment textarea {
+      width: 100%;
+      padding: 1px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      min-height: 310px;
+      background: #f9f9f9;
+    }
+    .comment textarea:focus {
+      outline: none;
+      border-color: #28a745;
+    }
+    .comment button, .progress button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      border: none;
+      background: #333;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .comment button:hover, .progress button:hover {
+      background-color: #555;
+    }
+    .review-container {
+      margin-top: 10px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 12px;
+    }
+    .review select {
+      padding: 8px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+      width: 100%;
+    }
+    .review select:focus {
+      outline: none;
+      border-color: #28a745;
+    }
+    .status-button {
+      padding: 6px 12px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: not-allowed;
+      font-weight: bold;
+    }
+    .status-button.delivered {
+      background-color: green;
+    }
+    .save-comment-button {
+      background-color: #28a745;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .save-comment-button:hover {
+      background-color: #218838;
+    }
