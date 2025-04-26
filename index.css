@@ -1,159 +1,186 @@
 body {
-      background-image: url('https://cdn.pixabay.com/photo/2018/01/05/18/05/bench-3063558_1280.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-     font-family: Arial, sans-serif;
-     margin: 0;
-     padding: 0;
-    }
-    .left-column {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      width: 35%;
-      margin-right: 10%;
-    }
-    .envelope {
-      width: 60%;
-      background-color: #fff;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      text-align: center;
-      border-radius: 15px;
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-    }
-    .envelope::before {
-      content: "✉️";
-      font-size: 70px;
-      position: absolute;
-      top: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .envelope .message {
-      display: none;
-      font-size: 18px;
-      color: #333;
-      margin-top: 20px;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-    }
-    .envelope.open .message {
-      display: block;
-      opacity: 1;
-    }
-    .notification-bubble {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      background-color: #ff6347;
-      color: white;
-      font-size: 22px;
-      padding: 5px 10px;
-      border-radius: 50%;
-    }
-    .notification-text {
-      font-size: 14px;
-      color: #333;
-      margin-top: 10px;
-    }
-    .store-button {
-      padding: 12px 20px;
-      background-color: #ff6347;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      width: 30%;
-      text-align: center;
-      transition: background-color 0.3s;
-      margin-top: 20px;
-    }
-    .store-button:hover {
-      background-color: #333;
-    }
-    .right-column {
-      width: 50%;
-    }
-    .login-form {
-      width: 70%;
-      padding: 30px;
-      background-color: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .login-form h2 {
-      margin-bottom: 20px;
-      font-size: 24px;
-      color: #333;
-    }
-    .login-form input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: none;
-      background-color: transparent;
-      border-bottom: 2px solid #ff6347;
-      border-radius: 0;
-      box-sizing: border-box;
-      font-size: 16px;
-      color: #333;
-    }
-    .login-form .login-button {
-      background-color: #ff6347;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-      width: 100%;
-      padding: 12px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      transition: background-color 0.3s;
-    }
-    .login-form .login-button:hover {
-      background-color: #333;
-    }
-    .login-form a {
-      text-decoration: none;
-      color: #ff6347;
-      font-size: 14px;
-    }
-    .message {
-      margin-top: 20px;
-    }
-    .message p {
-      font-size: 12px;
-    }
+  background-image: url('https://cdn.pixabay.com/photo/2018/01/05/18/05/bench-3063558_1280.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 35%;
+  margin-right: 10%;
+}
+
+.envelope {
+  width: 60%;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.envelope::before {
+  content: "✉️";
+  font-size: 70px;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.envelope .message {
+  display: none;
+  font-size: 18px;
+  color: #333;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.envelope.open .message {
+  display: block;
+  opacity: 1;
+}
+
+.notification-bubble {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #ff6347;
+  color: white;
+  font-size: 22px;
+  padding: 5px 10px;
+  border-radius: 50%;
+}
+
+.notification-text {
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.store-button {
+  padding: 12px 20px;
+  background-color: #ff6347;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 30%;
+  text-align: center;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+}
+
+.store-button:hover {
+  background-color: #333;
+}
+
+.right-column {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  width: 70%;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid #ff6347;
+  border-radius: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: #333;
+}
+
+.login-form .login-button {
+  background-color: #ff6347;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.login-form .login-button:hover {
+  background-color: #333;
+}
+
+.login-form a {
+  text-decoration: none;
+  color: #ff6347;
+  font-size: 14px;
+}
+
+.message {
+  margin-top: 20px;
+}
+
+.message p {
+  font-size: 12px;
+}
+
+/* MOBILE STYLES */
 @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
+  body {
+    flex-direction: column;
+  }
 
-      .left-column {
-        display: none;
-      }
+  .left-column {
+    display: none;
+  }
 
-      .right-column {
-        width: 100%;
-        padding: 2rem 1rem;
-      }
+  .right-column {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
 
-      .store-button {
-        margin-top: 2rem;
-        width: 100%;
-        text-align: center;
-      }
-    }
+  .store-button {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  /* Make sure the second store button (under login) appears nicely */
+  .store-button.mobile-only {
+    display: block;
+  }
+}
